@@ -1,0 +1,68 @@
+services:
+  backend:
+    build:
+      context: ./pennypal-back
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./pennypal-back:/app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__DefaultConnection=${MSSQL_URL}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: ${MSSQL_PASSWORD}
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserverdata:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "ps aux | grep -v grep | grep sqlservr > /dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+
+  db-init:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./pennypal-back/Scripts:/scripts
+      - ./pennypal-back/Sql:/tmp/sql
+    working_dir: /scripts
+    entrypoint: /bin/bash
+    command: ./init-db.sh
+    environment:
+      - MSSQL_SERVER=${MSSQL_SERVER}
+      - MSSQL_USER=${MSSQL_USER}
+      - MSSQL_PASSWORD=${MSSQL_PASSWORD}
+
+  frontend:
+    build:
+      context: ./pennypal-front
+      dockerfile: Dockerfile.dev
+    platform: linux/amd64
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
+    volumes:
+      - ./pennypal-front:/usr/src/app
+      # this line to not override node_modules
+      - /usr/src/app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  sqlserverdata: 

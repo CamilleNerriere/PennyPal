@@ -1,0 +1,6 @@
+[submodule "pennypal-back"]
+	path = pennypal-back
+	url = git@github.com:CamilleNerriere/PennyPalAPI.git
+[submodule "pennypal-front"]
+	path = pennypal-front
+	url = git@github.com:CamilleNerriere/PennyPal-front.git
