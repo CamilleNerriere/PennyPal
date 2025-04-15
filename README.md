@@ -10,10 +10,10 @@ This repository contains the full Docker setup to run the entire stack locally: 
 ##  Architecture
 
 - **Frontend** – React + TypeScript  
-  [See frontend README](./PennyPal-front/README.md)
+  [See frontend README]([./PennyPal-front/README.md](https://github.com/CamilleNerriere/PennyPal-front))
 
 - **Backend** – ASP.NET Core + SQL Server  
-  [See backend README](./PennyPalAPI/README.md)
+  [See backend README]([./PennyPalAPI/README.md](https://github.com/CamilleNerriere/PennyPalAPI))
 
 - **Database** – SQL Server with seed scripts
 
