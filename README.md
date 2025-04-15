@@ -76,6 +76,16 @@ A sample Docker Compose file for production is included as a reference:
 
 You can use the example as a starting point to build your own production setup.
 
+---
+
+## TODO
+
+Planned improvements for upcoming versions:
+
+- Improve mobile responsiveness and fix input focus issues on small screens (e.g. auto zoom not resetting after input blur)
+- Add unit and integration tests for backend and frontend
+
+
 ## Licence
 
 This project is open-source and available under the MIT License.
