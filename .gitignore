@@ -26,3 +26,6 @@ dist-ssr
 .env
 
 /nginx
+
+docker-compose.prod.yml
+04_seed_data_private.sql

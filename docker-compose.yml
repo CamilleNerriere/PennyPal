@@ -59,6 +59,7 @@ services:
       - "5173:5173"
     environment:
       VITE_API_URL: ${VITE_API_URL}
+      VITE_IS_DEMO: ${VITE_IS_DEMO}
     volumes:
       - ./pennypal-front:/usr/src/app
       # this line to not override

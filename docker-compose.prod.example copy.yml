@@ -1,3 +1,8 @@
+# Example production Docker Compose file
+# This is a reference setup for production.
+# It requires private configuration files (e.g., nginx.conf) not included in this repository.
+# Do not use as-is for deployment.
+
 services:
   backend:
     restart: always
