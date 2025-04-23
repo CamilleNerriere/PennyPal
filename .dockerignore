@@ -1,0 +1,37 @@
+# Frontend React (pennypal-front)
+pennypal-front/node_modules
+pennypal-front/build
+pennypal-front/.env
+pennypal-front/.DS_Store
+pennypal-front/.vscode
+pennypal-front/.idea
+pennypal-front/npm-debug.log*
+pennypal-front/yarn-debug.log*
+pennypal-front/yarn-error.log*
+
+# Backend .NET (pennypal-back)
+pennypal-back/bin/
+pennypal-back/obj/
+pennypal-back/.vs/
+pennypal-back/.vscode
+pennypal-back/.DS_Store
+pennypal-back/.env
+pennypal-back/*.db
+pennypal-back/*.log
+pennypal-back/appsettings*.json
+
+# NGINX config
+nginx/cache/
+nginx/temp/
+nginx/.DS_Store
+
+# Fichiers communs et sensibles
+*.env
+*.log
+*.db
+.DS_Store
+.vscode
+.idea
+.git
+.gitignore
+
